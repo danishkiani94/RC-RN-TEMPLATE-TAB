@@ -1,36 +1,26 @@
 import * as React from 'react'
-import { View, Text } from 'react-native'
-
-import { createAppContainer, createStackNavigator } from 'react-navigation'
-import createAnimatedSwitchNavigator from 'react-navigation-animated-switch'
-import Feed from '../Containers/Feed'
-import { createDrawerNavigator } from '@react-navigation/drawer'
-
+import { Text, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import HomeScreen from '../Containers/Home'
 
-function Article() {
+function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Article Screen</Text>
+      <Text>Settings!</Text>
     </View>
   )
 }
 
-const Drawer = createDrawerNavigator()
-
-function MyDrawer() {
-  return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Feed" component={Feed} />
-      <Drawer.Screen name="Article" component={Article} />
-    </Drawer.Navigator>
-  )
-}
+const Tab = createBottomTabNavigator()
 
 export default function PrimaryNav() {
   return (
     <NavigationContainer>
-      <MyDrawer />
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   )
 }
